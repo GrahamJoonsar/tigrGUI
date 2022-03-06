@@ -9,7 +9,7 @@ CheckBox::CheckBox(int x, int y, int sideLength){
     selected = false;
 }
 
-void CheckBox::draw(Tigr * screen){
+void CheckBox::draw(Tigr * screen) const{
     tigrFill(screen, x, y, sideLength, sideLength, BG);
     if (selected) tigrFill(screen, x+2, y+2, sideLength-4, sideLength-4, SELECTED_COLOR);
 }
