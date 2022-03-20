@@ -1,9 +1,10 @@
 #pragma once
 
 #include "tigr.h"
+#include "guiObject.hpp"
 #include <string>
 
-class TextArea{
+class TextArea : GUIObject{
     private:
         int x, y, w, h;
         int borderWidth;

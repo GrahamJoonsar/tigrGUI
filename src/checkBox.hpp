@@ -1,8 +1,9 @@
 #pragma once
 
 #include "tigr.h"
+#include "guiObject.hpp"
 
-class CheckBox{
+class CheckBox : public GUIObject{
     private:
         int x, y, sideLength;
         bool selected;

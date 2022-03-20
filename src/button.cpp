@@ -26,7 +26,7 @@ void Button::draw(Tigr * screen) const {
     tigrPrint(screen, tfont, x+5, y+4, textColor, label.c_str());
 }
 
-void Button::update(Tigr * screen, std::vector<void*> args){
+void Button::update(Tigr * screen){
     int mx, my, buttons;
     tigrMouse(screen, &mx, &my, &buttons);
     // On the button
@@ -40,7 +40,8 @@ void Button::update(Tigr * screen, std::vector<void*> args){
     } else currentBGColor = bgColor;
 }
 
-void Button::setFunction(void(*g)(std::vector<void*>)){
+void Button::setFunction(std::vector<void*> args, void(*g)(std::vector<void*>)){
+    this->args = args;
     f = g;
 }
 

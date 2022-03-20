@@ -1,8 +1,9 @@
 #pragma once
 
 #include "tigr.h"
+#include "guiObject.hpp"
 
-class Slider{
+class Slider : public GUIObject{
     private:
         static bool selected;
         bool this_selected;

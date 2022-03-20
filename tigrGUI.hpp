@@ -3,8 +3,14 @@
 #include <vector>
 #include <string>
 
+class GUIObject{
+    public:
+        virtual void draw (Tigr*) const = 0;
+        virtual void update (Tigr*) = 0;
+};
+
 // button.hpp
-class Button{
+class Button : public GUIObject{
     private:
         int x, y, w, h;
         int borderWidth;
@@ -15,12 +21,13 @@ class Button{
         TPixel borderColor;
         TPixel textColor;
         std::string label;
+        std::vector<void*> args;
         void (*f)(std::vector<void*>);
     public:
         Button(int x, int y, std::string label);
         void draw(Tigr * screen) const;
-        void update(Tigr* screen, std::vector<void*> args);
-        void setFunction(void(*g)(std::vector<void*>));
+        void update(Tigr* screen);
+        void setFunction(std::vector<void*> args, void(*g)(std::vector<void*>));
         void setPos(int x, int y);
         void setText(std::string newText);
         void setTextWithoutDimensions(std::string newText);
@@ -28,7 +35,7 @@ class Button{
 };
 
 // checkBox.hpp
-class CheckBox{
+class CheckBox : public GUIObject{
     private:
         int x, y, sideLength;
         bool selected;
@@ -48,7 +55,7 @@ class CheckBox{
 };
 
 // slider.hpp
-class Slider{
+class Slider : public GUIObject{
     private:
         static bool selected;
         bool this_selected;
@@ -73,7 +80,7 @@ class Slider{
 };
 
 // textArea.hpp
-class TextArea{
+class TextArea : public GUIObject{
     private:
         int x, y, w, h;
         int borderWidth;
